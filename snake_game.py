@@ -6,6 +6,21 @@
 حتما از حلقه استفاده کنید
 اعداد را از ورودی دریافت نمائید
 '''
+numbers = []
+running = True
+counter = 1
+while running:
+    new_number = float(input(f'Enter number {counter}: '))
+    numbers.append(new_number)
+    if input('Do you want to quit? (y or n) ') == 'y':
+        running = False
+
+    counter += 1
+
+for i in range(len(numbers) - 1, -1, -1):
+    print(numbers[i], end=" ")
+
+
 # exercise 2
 '''
 برنامه ای بنویسید که اعداد لیست بالا را مرتب نماید 
@@ -51,14 +66,14 @@ programming
 
 
 
-from turtle import Screen, Turtle
-display_surface = Screen()
-display_surface.bgcolor('blue')
-display_surface.title("Snake Game")
-display_surface.setup(width=600, height=600)
+# from turtle import Screen, Turtle
+# display_surface = Screen()
+# display_surface.bgcolor('blue')
+# display_surface.title("Snake Game")
+# display_surface.setup(width=600, height=600)
 
 
 
-running = True
-while running:
-    display_surface.update()
+# running = True
+# while running:
+#     display_surface.update()
