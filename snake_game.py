@@ -1,36 +1,24 @@
+from turtle import Screen, Turtle
+display_surface = Screen()
+display_surface.bgcolor('black')
+display_surface.title("Snake Game")
+display_surface.setup(width=600, height=600)
 
-def add(n1, n2):
-    return n1 + n2
-# تمرین دو عدد از ورودی دریافت نمائید و با کمک توابع زیر حاصل 
-# حمع، تفریق، تقسیم و ضرب آنها را نمایش دهد
-# sub  تفریق
-# div  تقسیم
-# mul ضرب
-print(add(2,5))
+def make_turtle(tshape, tcolor):
+    my_turtle = Turtle()
+    my_turtle.shape(tshape)
+    my_turtle.color(tcolor)
+    my_turtle.speed("fastest")
+    my_turtle.penup()
+    return my_turtle
 
-# تمرین : تابعی بنویسید که یک عدد از ورودی دریافت نماید و در صورت زوج بودن
-# True
-# و در صورت فرد بودن 
-# False
-# را برگرداند
+snake_head = make_turtle("square","blue")
+snake_head.goto(100,100)
 
-# تمرین
-# تابعی بنویسید که لیستی از اعداد را از ورودی دریافت نماید و در صورت صعودی بودن لیست
-# True
-# و در غیر اینصورت 
-# False
-# برگرداند
+# TODO    برای غذا یک ترتل دایره ای قرمز اضافه کنید
 
 
-# from turtle import Screen, Turtle
-# display_surface = Screen()
-# display_surface.bgcolor('blue')
-# display_surface.title("Snake Game")
-# display_surface.setup(width=600, height=600)
-
-
-
-# running = True
-# while running:
-#     display_surface.update()
+running = True
+while running:
+    display_surface.update()
 
