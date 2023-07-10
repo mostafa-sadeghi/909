@@ -1,32 +1,9 @@
-from turtle import Screen, Turtle
-from random import randint
 from time import sleep
-
-
-def make_screen(color, w, h):
-    window = Screen()
-    window.bgcolor(color)
-    window.title("Snake Game")
-    window.setup(width=w, height=h)
-    return window
+from snake_game_utils import *
 
 
 display_surface = make_screen("black", 600, 600)
-
-
-def make_turtle(tshape, tcolor):
-    my_turtle = Turtle()
-    my_turtle.shape(tshape)
-    my_turtle.color(tcolor)
-    my_turtle.speed("fastest")
-    my_turtle.penup()
-    return my_turtle
-
-
-def change_food_position():
-    xposition = randint(-280, 280)
-    yposition = randint(-280, 280)
-    snake_food.goto(xposition, yposition)
+score = 0
 
 
 def change_dir_to_up():
@@ -77,13 +54,18 @@ display_surface.onkeypress(change_dir_to_right, "Right")
 snake_head = make_turtle("square", "blue")
 snake_food = make_turtle("circle", "red")
 snake_head.direction = ""
-change_food_position()
+change_food_position(snake_food)
 
+
+score_board = make_turtle("square", "white")
+score_board.hideturtle()
+score_board.goto(0, 260)
+score_board.write(f"Score: {score}", font=("arial", 30), align="center")
 
 running = True
 while running:
     display_surface.update()
     if snake_head.distance(snake_food) < 20:
-        change_food_position()
+        change_food_position(snake_food)
     move_snake()
     sleep(0.2)
