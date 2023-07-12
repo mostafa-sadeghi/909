@@ -1,11 +1,13 @@
 from turtle import Screen, Turtle
 from random import randint
 
+
 def make_screen(color, w, h):
     window = Screen()
     window.bgcolor(color)
     window.title("Snake Game")
     window.setup(width=w, height=h)
+    window.tracer(False)
     return window
 
 
@@ -20,5 +22,10 @@ def make_turtle(tshape, tcolor):
 
 def change_food_position(snake_food):
     xposition = randint(-280, 280)
-    yposition = randint(-280, 280)
+    yposition = randint(-280, 230)
     snake_food.goto(xposition, yposition)
+
+
+def reset(snake_head):
+    snake_head.goto(0, 0)
+    snake_head.direction = ""
