@@ -62,6 +62,7 @@ score_board = make_turtle("square", "white")
 score_board.hideturtle()
 score_board.goto(0, 260)
 
+snake_tails = []
 
 running = True
 while running:
@@ -73,6 +74,9 @@ while running:
     if snake_head.distance(snake_food) < 20:
         change_food_position(snake_food)
         score += 1
+        new_tail = make_turtle("square", "cyan")
+        snake_tails.append(new_tail)
+
         if score > high_score:
             high_score = score
 
@@ -81,5 +85,18 @@ while running:
             snake_head.ycor() > 240 or snake_head.ycor() < -290:
         reset(snake_head)
         score = 0
+
+    for i in range(len(snake_tails) - 1, 0, -1):
+        xpos = snake_tails[i-1].xcor()
+        ypos = snake_tails[i-1].ycor()
+        snake_tails[i].setpos(xpos, ypos)
+
+    if len(snake_tails) > 0:
+        xhead = snake_head.xcor()
+        yhead = snake_head.ycor()
+        snake_tails[0].setpos(xhead, yhead)
+
+
+
     move_snake()
     sleep(0.2)
