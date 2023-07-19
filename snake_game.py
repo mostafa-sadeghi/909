@@ -83,7 +83,7 @@ while running:
     if snake_head.xcor() > 290 or \
         snake_head.xcor() < -290 or \
             snake_head.ycor() > 240 or snake_head.ycor() < -290:
-        reset(snake_head)
+        reset(snake_head, snake_tails)
         score = 0
 
     for i in range(len(snake_tails) - 1, 0, -1):

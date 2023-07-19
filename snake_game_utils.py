@@ -26,6 +26,10 @@ def change_food_position(snake_food):
     snake_food.goto(xposition, yposition)
 
 
-def reset(snake_head):
+def reset(snake_head, tails):
     snake_head.goto(0, 0)
     snake_head.direction = ""
+    for tail in tails:
+        tail.hideturtle()
+
+    tails.clear()
