@@ -2,33 +2,33 @@
 # برنامه ای بنویسید که دو عدد از ورودی بگیرد و تعداد ارقام مشترک ان ها را محاسب هو نمایش دهد
 
 
-def my_function(number):
-    while number:
-        print(number % 10)
-        number //= 10
+# def my_function(number):
+#     while number:
+#         print(number % 10)
+#         number //= 10
 
-my_function(678)
+# my_function(678)
 
-def my_function(number):
-    number = str(number)
-    for i in range(len(number)-1, -1, -1):
-        print(number[i])
-my_function(678)
+# def my_function(number):
+#     number = str(number)
+#     for i in range(len(number)-1, -1, -1):
+#         print(number[i])
+# my_function(678)
 
-def my_function(number1, number2):
-    number1 = str(number1)
-    number2 = str(number2)
-    count = 0
+# def my_function(number1, number2):
+#     number1 = str(number1)
+#     number2 = str(number2)
+#     count = 0
 
-    for i in range(len(number1)):
-        for j in range(len(number2)):
-            if number1[i] == number2[j]:
-                count += 1
+#     for i in range(len(number1)):
+#         for j in range(len(number2)):
+#             if number1[i] == number2[j]:
+#                 count += 1
 
-    return count
+#     return count
 
 
-print(my_function(623, 153))
+# print(my_function(623, 153))
 
 
 # TODO
@@ -59,3 +59,44 @@ fermi را نمایش دهد
 
 
 """
+
+from random import randint
+from random import shuffle
+
+
+def create_secret_number(num_of_digits):
+    all_digits = list('0123456789')
+    shuffle(all_digits)
+    number = ''
+    for i in range(num_of_digits):
+        number += all_digits[:num_of_digits][i]
+    return number
+
+
+def generate_result(user_guess, secret_number):
+    if user_guess == secret_number:
+        return 'You Won!!!'
+    res = ''
+    for i in range(len(user_guess)):
+        if user_guess[i] == secret_number[i]:
+            res += 'Fermi, '
+        elif user_guess[i] in secret_number:
+            res += 'Pico, '
+    if len(res) == 0:
+        return 'bagels'
+    return res
+
+
+secret_number = create_secret_number(3)
+print("secret_number", secret_number)
+counter = 1
+while counter <= 10:
+    print(f'Time #{counter}')
+
+    user_guess = input("Enter your guess: ")
+    res = generate_result(user_guess, secret_number)
+    if user_guess == secret_number:
+        print("You Won!!!")
+        break
+    print(res)
+    counter += 1
